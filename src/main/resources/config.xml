@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:c="http://www.springframework.org/schema/c" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           https://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/util
+                           https://www.springframework.org/schema/util/spring-util.xsd
+                            ">
+        <context:annotation-config/>
+        <context:component-scan base-package="Component_scan"/>
+        <util:list list-class="java.util.Vector" id="bestfriends">
+            <value>Vaibhav</value>
+            <value>Raman</value>
+            <value>Durgesh bhai</value>
+            <value>John Snow</value>
+        </util:list>
+    <bean class="com.springcore.Student" name="student1">
+        <property name="studentId">
+            <value>1174</value>
+        </property>
+        <property name="studentName">
+            <value>Vaibhav Agarwal</value>
+        </property>
+        <property name="studentAddress">
+            <value>Kolkata</value>
+        </property>
+    </bean>
+
+    <bean class="com.springcore.Student"  name="student2">
+        <property name="studentId" value="151538"/>
+        <property name="studentName" value="Rahut"/>
+        <property name="studentAddress" value="Kanpur"/>
+    </bean>
+
+    <bean class="com.springcore.Student" name="student3" p:studentId="101" p:studentName="Rajesh" p:studentAddress="Delhi"/>
+
+
+
+    <bean class="com.springcore.Employee" name="employee1">
+        <property name="name" value="Vaibhav"/>
+        <property name="phones">
+            <list>
+                <value>1648631</value>
+                <value>46466464</value>
+            </list>
+        </property>
+        
+        <property name="addresses">
+            <set>
+                <value>Hyderabad</value>
+                <value>Kolkata</value>
+            </set>
+        </property>
+
+        <property name="courses">
+            <map>
+                <entry key="Java" value="8years"/>
+                <entry key="SQL" value="2years"/>
+            </map>
+        </property>
+
+<!--        <property name="props">-->
+<!--            <props key="username">Vaibhava1174</props>-->
+<!--            <props key="password">vaibhavu0101</props>-->
+<!--        </property>-->
+    </bean>
+
+
+    <bean class="com.springcore.B_ref" name="bref">
+        <property name="value" value="20"/>
+    </bean>
+
+    <bean class="com.springcore.A_ref" name="aref">
+        <property name="value" value="10"/>
+        <property name="obj" ref="bref"/>
+    </bean>
+
+
+    <bean class="constructor_injection.Certi" name="certi" c:name="JAVA HERO"/>
+
+    <bean class="constructor_injection.Person" name="ci">
+        <constructor-arg value="Vaibhav"/>
+        <constructor-arg value="123456"/>
+        <constructor-arg ref="certi"/>
+    </bean>
+
+
+    <bean class="autowire.Address" name="add1">
+        <property name="street" value="Temp Street"/>
+        <property name="City" value="Kolkata"/>
+    </bean>
+
+
+    <bean class="autowire.Employee" name="emp1" autowire="byType"/>
+
+
+
+
+    <bean class="annotation_autowired.Address" name="address">
+        <property name="street" value="Temp Street"/>
+        <property name="City" value="Deh"/>
+    </bean>
+
+
+<!--    <bean class="annotation_autowired.Employee" name="emp2" />-->
+<!--     <bean class="annotation_autowired.Employee" name="myfriends">-->
+<!--         <property name="myfriends">-->
+<!--            <ref bean="bestfriends"/>-->
+<!--         </property>-->
+<!--     </bean>-->
+
+
+
+
+
+</beans>
